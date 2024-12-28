@@ -1,0 +1,15 @@
+/* Gaya untuk navbar */
+.navbar {
+    background-size: cover; /* Mengatur gambar agar menutupi seluruh area */
+    background-color: #318f2500; /* Warna latar belakang navbar */
+    background-color: rgba(49, 143, 37, 0.204); /* Warna hijau dengan transparansi */
+}
+
+.navbar .navbar-brand,
+.navbar .nav-link {
+    color: #fff; /* Warna teks untuk brand dan link */
+}
+
+.navbar .nav-link:hover {
+    text-decoration: underline; /* Garis bawah saat hover */
+}
