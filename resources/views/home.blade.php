@@ -1,71 +1,88 @@
+@extends('layouts.app')
+
+@section('title', 'Home - Layanan Sampah')
+
 @section('content')
-
-  <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-  <div class="relative">
-    <img class="absolute inset-0 w-full h-full object-cover" src="{{ asset('images/background/bg_sirih.png') }}" alt="Background Image">
-    @extends('layouts.app')
-    <div class="flex flex-col min-h-[948px] p-11 pt-0 pb-[220px] relative z-10">
-      <div class="bg-cover bg-no-repeat bg-fixed h-24" style="background-image: url('../images/background/bg_sirih.png');"></div>
-      <div class="text-center">
-        <h1 class="text-4xl font-bold">Lorem ipsum dolor sit amet</h1>
-        <p class="mt-4 text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
+<div class="container mx-auto px-4">
+    <!-- Hero Section -->
+    <div class="text-center py-12">
+        <h1 class="text-4xl font-bold mb-4">Lorem ipsum dolor sit amet</h1>
+        <p class="text-lg text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
     </div>
-  </div>
 
-  <nav class="flex items-center space-x-4 p-4 bg-white shadow">
-    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce164986ade3990d2b79c930fb16051e55d76c25dcd6536a98f160e278760928?placeholderIfAbsent=true&apiKey=ec0a6845eef9472eafac242bdec5cdb9" class="h-8" alt="" />
-    <a href="#" class="text-gray-700 hover:text-blue-500">Home</a>
-    <a href="#" class="text-gray-700 hover:text-blue-500">Home</a>
-    <a href="#" class="text-gray-700 hover:text-blue-500">Home</a>
-    <a href="#" class="text-gray-700 hover:text-blue-500">Home</a>
-  </nav>
+    <!-- Features Navigation -->
+    <nav class="flex justify-center space-x-8 py-6 border-b border-gray-200">
+        <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors duration-200" data-slide="0">Image 1</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors duration-200" data-slide="1">Image 2</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors duration-200" data-slide="2">Image 3</a>
+        <a href="#" class="text-gray-600 hover:text-blue-500 transition-colors duration-200" data-slide="3">Image 4</a>
+    </nav>
 
-  <section class="p-8">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e799285f62410191c26ceb31a0d2d1dc82f7d63081bba6ba6a6b6d564ccf3947?placeholderIfAbsent=true&apiKey=ec0a6845eef9472eafac242bdec5cdb9" class="w-full h-auto" alt="Feature illustration" />
-      <div>
-        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-    </div>
-  </section>
+    <!-- Slide Image Section -->
+    <section class="py-12">
+        <div class="relative">
+            <div class="slide-container overflow-hidden">
+                <div class="slides flex transition-transform duration-500" style="width: 400%;">
+                    <img src="/api/placeholder/600/400" alt="Image 1" class="w-1/2 rounded-lg shadow-lg"/>
+                    <img src="/api/placeholder/600/400" alt="Image 2" class="w-1/2 rounded-lg shadow-lg"/>
+                    <img src="/api/placeholder/600/400" alt="Image 3" class="w-1/2 rounded-lg shadow-lg"/>
+                    <img src="/api/placeholder/600/400" alt="Image 4" class="w-1/2 rounded-lg shadow-lg"/>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="p-8">
-    <div class="flex flex-col md:flex-row items-center">
-      <div class="flex-1">
-        <h2 class="text-2xl font-bold">Lorem ipsum dolor sit amet</h2>
-        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-      </div>
-      <div class="flex-1">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/cf7d22d6d8b09019efd53f102cbdcee70b014317b5545aebe3ef249f2059549a?placeholderIfAbsent=true&apiKey=ec0a6845eef9472eafac242bdec5cdb9" class="w-full h-auto" alt="Information section image" />
-      </div>
-    </div>
-  </section>
+    <!-- Content Section -->
+    <section class="py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <img src="/api/placeholder/600/400" alt="Content section" class="rounded-lg shadow-lg"/>
+            <div class="space-y-4">
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </section>
 
-  <section class="p-8 bg-gray-100">
-    <div class="flex flex-col md:flex-row items-center">
-      <div class="flex-1">
-        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/3e2114be001b18dc0b0c3b608405d341d16635f58cfa719138b67e322acc8bec?placeholderIfAbsent=true&apiKey=ec0a6845 eef9472eafac242bdec5cdb9" class="w-full h-auto" alt="Call to action image" />
-      </div>
-      <div class="flex-1 p-4">
-        <h2 class="text-2xl font-bold">Lorem ipsum dolor sit amet</h2>
-        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        <button class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">REGISTER</button>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section class="py-12">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <div class="md:w-1/2">
+                <h2 class="text-2xl font-semibold mb-4">boleh di utak atik kalo kurang sreg</h2>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <img src="/api/placeholder/600/400" alt="About section" class="md:w-1/2 rounded-lg shadow-lg"/>
+        </div>
+    </section>
 
-  <footer class="bg-gray-800 text-white p-4">
-    <div class="text-center">
-      <address class="not-italic">
-        Contact<br />
-        metal5.0@gmail.com<br />
-        +62 12345678
-      </address>
-      <p class="text-sm">@copyright2024 metal 5.0</p>
-    </div>
-  </footer>
+    <!-- CTA Section -->
+    <section class="py-12 bg-gray-50 rounded-lg">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+            <img src="/api/placeholder/600/400" alt="CTA section" class="md:w-1/2 rounded-lg shadow-lg"/>
+            <div class="md:w-1/2 space-y-4">
+                <h2 class="text-2xl font-semibold">Lorem ipsum dolor sit amet</h2>
+                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors duration-200">
+                    REGISTER
+                </button>
+            </div>
+        </div>
+    </section>
+</div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const slides = document.querySelector('.slides');
+        const links = document.querySelectorAll('nav a');
+
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault();
+                const slideIndex = this.getAttribute('data-slide');
+                const slideWidth = slides.querySelector('img').clientWidth;
+                slides.style.transform = `translateX(-${slideIndex * slideWidth}px)`;
+            });
+        });
+    });
+</script>
 @endsection

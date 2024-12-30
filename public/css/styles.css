@@ -1,49 +1,62 @@
-/* BODY */
-/* styles.css */
-/* BODY */
-body {
-  background-color: #fff; /* Ganti background body menjadi warna solid */
-  margin: 0; /* Remove default margin */
+/* TEMPLATE STYLES */
+html,
+body,
+.view {
+    height: 50vh;
+    width: 100%;
 }
 
-/* END BODY */
-
-/* Navbar styles */
-.nav-divider {
-  background-image: url("../images/background/bg_sirih.png"); /* Apply the image to the navbar */
-  background-size: cover; /* Make sure the image covers the entire area */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-attachment: fixed; /* Keep the background fixed when scrolling */
-  height: 100px; /* Set a height for the navbar */
-  position: relative; /* Ensure positioning context for absolute children */
-  z-index: 1; /* Ensure navbar is above other content */
+/* Navigation */
+.navbar {
+    background-color: transparent;
 }
 
-/* Hero Container styles */
-.hero-container {
-  position: relative; /* Position relative for absolute children */
-  overflow: hidden; /* Prevent overflow of child elements */
+.scrolling-navbar {
+    transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
 }
 
-.hero-main {
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  position: relative;
-  min-height: 948px;
-  width: 100%;
-  padding: 11px 0 220px;
-  z-index: 0; /* Ensure this is below the navbar */
+.top-nav-collapse {
+    background-color: #1C2331;
 }
 
-.image-bg {
-  position: absolute;
-  top: 0; /* Align to the top */
-  left: 0; /* Align to the left */
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  object-fit: cover; /* Cover the area without distortion */
-  z-index: -1; /* Send the image behind other content */
+footer.page-footer {
+    background-color: #1C2331;
+    margin-top: 0;
 }
 
-/* END CONTAINER */
+@media only screen and (max-width: 768px) {
+    .navbar {
+        background-color: #1C2331;
+    }
+}
+
+/* Background Image */
+.f-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 70%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* Carousel */
+.carousel,
+.carousel-item,
+.active {
+    height: 100%;
+}
+
+.carousel-inner {
+    height: 100%;
+}
+
+.flex-center {
+    color: #fff;
+}
+
+.carousel-caption {
+    height: 100%;
+    padding-top: 7rem;
+}
