@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- Add Font Awesome for the profile icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>@yield('title', 'Layanan Sampah')</title>
     <link rel="shortcut icon" href="{{ asset('logo.png') }}" type="image/x-icon">
@@ -49,31 +48,34 @@
                     <!-- Profile Button with Dropdown -->
                     <div class="relative group">
                         <button class="w-10 h-10 bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition-colors">
-                            <img src="{{asset('images/icon/user.png')}}" alt="" srcset="">
+                            <a href="{{ route('profile') }}"><img src="{{ asset('images/icon/user.png') }}" alt="Profile"></a>
                         </button>
                         <!-- Dropdown Menu -->
                         <div class="absolute right-0 hidden group-hover:block mt-2 w-48 bg-white rounded-md shadow-lg py-1">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
+                            <a href="{{ route('profile') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profile</a>
+                            <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Settings</a>
                             <div class="border-t border-gray-100"></div>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sign out</a>
+                            <form action="{{ route('logout') }}" method="POST" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                @csrf
+                                <button type="submit" class="w-full text-left">Sign out</button>
+                            </form>
                         </div>
                     </div>
                     <!-- Hamburger Menu for Mobile -->
                     <div class="md:hidden">
                         <button id="hamburger" class="text-white focus:outline-none">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0  24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
                             </svg>
                         </button>
                     </div>
                 </div>
             </div>
-            <img src="{{asset('images/icon/navbar.png')}}" class="navbarLine" alt="" srcset="">
+            <img src="{{ asset('images/icon/navbar.png') }}" class="navbarLine" alt="" srcset="">
         </div>
         <!-- Sidebar Menu -->
         <div id="sidebar" class="sidebar">
-            <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="#">Home</a>
+            <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="{{ route('home') }}">Home</a>
             <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="#">Features</a>
             <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="#">Services</a>
             <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="#">Contact</a>
@@ -82,7 +84,6 @@
 
     <!-- Rest of the content remains the same -->
     <div class="pt-16">
-
         @yield('content')
     </div>
 
@@ -93,12 +94,19 @@
                 <div class="text-center md:text-left">
                     <h3 class="text-lg font-semibold mb-4">Contact</h3>
                     <address class="not-italic">
-                        <p>metal5.0@gmail.com</p>
+                        <p>rizki.ardiansyah.noviatno123@gmail.com</p>
                         <p>+62 12345678</p>
                     </address>
                 </div>
                 <div class="text-center md:text-right">
-                    <p class="text-sm text-gray-400">@copyright2024 metal 5.0</p>
+                    <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                    <div class="flex justify-center md:justify-end space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                    <p class="text-sm text-gray-400 mt-4">&copy; 2024 Layanan Sampah</p>
                 </div>
             </div>
         </div>

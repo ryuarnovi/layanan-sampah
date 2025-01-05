@@ -1,0 +1,253 @@
+.login-container {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.registration-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  align-items: center;
+  padding: 80px 40px;
+}
+
+.background-image {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.content-wrapper {
+  position: relative;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  align-items: flex-start;
+  gap: 40px;
+  flex-wrap: wrap;
+  padding: 0 20px; /* Menambah padding di kiri dan kanan */
+}
+
+.header-section {
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  color: #000;
+  text-align: center;
+  flex: 1;
+  padding-left: 40px; /* Menambah padding di kiri */
+}
+
+.main-title {
+  font-family: 'Mochiy Pop One', sans-serif;
+  font-size: 32px;
+  margin-left: 20px; /* Menambah margin di kiri */
+}
+
+.subtitle {
+  font-family: Montaga, sans-serif;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-left: 20px; /* Menambah margin di kiri */
+}
+
+.form-section {
+  align-self: end;
+  display: flex;
+  margin-top: 40px;
+  flex-direction: column;
+  color: #fff;
+  flex: 1;
+  font-family: 'Mochiy Pop One', sans-serif;
+  padding-left: 40px; /* Menambah padding di kiri */
+}
+
+.form-title {
+  font-size: 28px;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 20px;
+  margin-left: 20px; /* Menambah margin di kiri */
+}
+
+.input-group {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+  padding-left: 30px; /* Menambah padding di kiri */
+}
+
+.input-label {
+  align-self: start;
+  margin-left: 30px; /* Menambah margin di kiri */
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.input-field {
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 45px;
+  border: none;
+  padding: 0 30px; /* Menambah padding di dalam input */
+  color: #fff;
+  font-size: 16px;
+  width: 90%; /* Mengurangi lebar untuk memberikan ruang di kanan */
+  margin-left: 20px; /* Menambah margin di kiri */
+}
+
+.form-note {
+  color: #000;
+  text-align: center;
+  margin-top: 15px;
+  font: 16px Montaga, sans-serif;
+  margin-left: 20px; /* Menambah margin di kiri */
+}
+
+.submit-button {
+  border-radius: 20px;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+  margin: 25px 0 0 50px; /* Menambah margin di kiri */
+  padding: 12px 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Mochiy Pop One', sans-serif;
+  width: fit-content; /* Menyesuaikan lebar button dengan kontennya */
+}
+
+@media (max-width: 991px) {
+  .registration-container {
+      padding: 40px 10px;
+  }
+  
+  .content-wrapper {
+      gap: 20px;
+      padding: 0 10px;
+  }
+  
+  .main-title {
+      font-size: 28px;
+      margin-left: 10px;
+  }
+  
+  .subtitle {
+      font-size: 18px;
+      margin-left: 10px;
+  }
+  
+  .form-title {
+      font-size: 24px;
+      margin-left: 10px;
+  }
+  
+  .input-group {
+      padding-left: 15px;
+  }
+  
+  .input-label {
+      margin-left: 15px;
+  }
+  
+  .input-field {
+      width: 95%;
+      margin-left: 10px;
+  }
+  
+  .submit-button {
+      margin-left: 25px;
+      padding: 10px 30px;
+  }
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 20px 0;
+  padding: 0 10px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid #fff;
+}
+
+.divider span {
+  padding: 0 10px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.google-login-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.google-login-button:hover {
+  background-color: #f1f1f1;
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.alert-error {
+  background-color: rgba(220, 38, 38, 0.9);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  position: relative;
+  animation: slideDown 0.5s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+      transform: translateY(-20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Pastikan alert error tampil di atas gambar background */
+.alert-error {
+  position: relative;
+  z-index: 10;
+}
+
+/* Menyesuaikan posisi alert agar lebih rapi */
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
