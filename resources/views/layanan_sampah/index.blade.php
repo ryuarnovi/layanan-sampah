@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <h1>Daftar Postingan</h1>
+
+    @foreach($posts as $post)
+        <div class="post">
+            <h2>{{ $post->title }}</h2>
+            <p>{{ $post->content }}</p>
+            @if($post->donor)
+                <p>Donor: {{ $post->donor->name }} ({{ $post->donor->email }})</p>
+            @else
+                <p>Donor: Tidak ada</p>
+            @endif
+        </div>
+    @endforeach
+</div>
     <div class="container">
         <h1>Layanan Sampah</h1>
         <a href="{{ route('layanan-sampah.create') }}" class="btn btn-primary mb-3">Tambah Layanan</a>

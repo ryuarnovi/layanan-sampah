@@ -1,0 +1,421 @@
+/* General Styles */
+body {
+    font-family: 'Istok Web', sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+    margin: 0;
+    padding: 0;
+}
+
+.profile-container {
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.profile-wrapper {
+    padding: 6rem 4rem;
+    position: relative;
+    min-height: 1080px;
+}
+
+/* Background Image */
+.background-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    max-width: auto;
+    margin: 0 auto;
+    gap: 1.25rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+/* Profile Sidebar */
+.profile-sidebar {
+    background-color: white;
+    border-radius: 3.125rem;
+    padding: 6rem 4.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.profile-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #50a3a0; /* Border around the avatar */
+}
+
+.profile-name {
+    margin-top: 1.5rem;
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: #000;
+}
+
+.profile-location {
+    margin-top: 1.25rem;
+    font-size: 1.25rem;
+    color: #666; /* Slightly lighter color for location */
+}
+
+/* Action Buttons */
+.action-button {
+    background-color: rgb(50, 143, 37);
+    color: white;
+    padding: 0.875rem 4.375rem;
+    border-radius: 1.875rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.action-button:hover {
+    background-color: rgb(40, 123, 27);
+}
+
+/* Form Container */
+.form-container {
+    background-color: white;
+    border-radius: 3.125rem;
+    padding: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    flex: 1; /* Allow it to grow */
+}
+
+/* Form Title */
+.form-title {
+    font-family: 'Mochiy Pop One', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #000;
+}
+
+/* Setting Items */
+.setting-item {
+    margin-bottom: 1.5rem;
+}
+
+.setting-button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.625rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.setting-button:hover {
+    background-color: #d0d0d0;
+}
+
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: white;
+    border-radius: 0.625rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    width: 100%;
+}
+
+.setting-item.active .dropdown-content {
+    display: block; /* Show when active */
+}
+
+.dropdown-item {
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+/* Setting.css or theme.css */
+
+/* General styles for the form container */
+.form-container {
+    background-color: white; /* Light background for the form */
+    border-radius: 1.5rem; /* Rounded corners */
+    padding: 2rem; /* Padding around the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Title of the form */
+.form-title {
+    font-family: 'Mochiy Pop One', sans-serif;
+    font-size: 2rem; /* Font size for the title */
+    text-align: center; /* Center the title */
+    margin-bottom: 1.5rem; /* Space below the title */
+    color: #000; /* Dark text color */
+}
+
+/* Style for labels */
+.setting-item label {
+    display: block; /* Block display for labels */
+    font-family: 'Mochiy Pop One', sans-serif;
+    font-size: 1.25rem; /* Font size for labels */
+    margin-bottom: 0.5rem; /* Space below the label */
+    color: #333; /* Darker text color for better readability */
+}
+
+/* Style for select dropdown */
+.setting-item select {
+    width: 100%; /* Full width */
+    padding: 0.75rem; /* Padding inside the select */
+    border-radius: 0.5rem; /* Rounded corners */
+    border: 1px solid #ccc; /* Light border */
+    font-size: 1rem; /* Font size */
+    margin-bottom: 1rem; /* Space below the select */
+    background-color: #f9f9f9; /* Light background */
+}
+
+/* Style for buttons */
+.setting-item button {
+    background-color: rgb(50, 143, 37); /* Button background color */
+    color: white; /* Button text color */
+    padding: 0.75rem 2rem; /* Padding for the button */
+    border-radius: 0.5rem; /* Rounded corners */
+    font-size: 1rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border: none; /* Remove default border */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+/* Button hover effect */
+.setting-item button:hover {
+    background-color: rgb(40, 123, 27); /* Darker green on hover */
+}
+
+/* Alert message styling */
+.alert {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text */
+    padding: 1rem; /* Padding for the alert */
+    border-radius: 0.5rem; /* Rounded corners */
+    margin-bottom: 1rem; /* Space below the alert */
+}
+
+/* Dark Theme Styles for Select Element */
+.dark-theme .setting-item select {
+    background-color: #333; /* Dark background for the select */
+    color: #fff; /* Black text color for the select */
+}
+
+/* Dark Theme Styles for Select Options */
+.dark-theme .setting-item select option {
+    background-color: #333; /* Dark background for options */
+    color: #fff; /* Black text color for options */
+}
+
+/* Optional: Style for the select element in light theme */
+.light-theme .setting-item select {
+    background-color: #f9f9f9; /* Light background for the select */
+    color: #333; /* Dark text color for the select */
+}
+
+/* Optional: Style for the select options in light theme */
+.light-theme .setting-item select option {
+    background-color: #f9f9f9; /* Light background for options */
+    color: #333; /* Dark text color for options */
+}
+
+/* Toggle Switch Styling */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin: 0 10px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.toggle-label:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .toggle-label {
+    background-color: #2196F3;
+}
+
+input:checked + .toggle-label:before {
+    transform: translateX(26px);
+}
+
+/* Alert Styles */
+.alert {
+    padding: 12px 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Auto hide alert after 3 seconds */
+.alert.fade-out {
+    opacity: 0;
+}
+
+/* Save Button Styles */
+.save-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-button:hover {
+    background-color: #45a049;
+}
+
+/* Toggle Switch Container */
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+/* Gaya untuk form ganti bahasa */
+.language-form {
+    display: inline-block; /* Menjaga form tetap dalam satu baris */
+    margin: 0; /* Menghilangkan margin default */
+}
+
+/* Gaya untuk elemen select */
+.language-form select {
+    width: 100%; /* Mengatur lebar penuh */
+    padding: 0.75rem; /* Padding di dalam select */
+    border: 1px solid #ccc; /* Border abu-abu */
+    border-radius: 0.5rem; /* Sudut yang membulat */
+    background-color: #f9f9f9; /* Warna latar belakang */
+    font-size: 1rem; /* Ukuran font */
+    cursor: pointer; /* Menunjukkan bahwa ini dapat diklik */
+    transition: border-color 0.3s; /* Transisi halus untuk border */
+}
+
+/* Gaya saat select dalam fokus */
+.language-form select:focus {
+    border-color: rgb(50, 143, 37); /* Warna border saat fokus */
+    outline: none; /* Menghilangkan outline default */
+}
+
+/* Gaya untuk opsi dalam select */
+.language-form select option {
+    padding: 10px; /* Padding untuk opsi */
+}
+
+/* Gaya untuk opsi yang dipilih */
+.language-form select option:checked {
+    background-color: rgb(50, 143, 37); /* Warna latar belakang untuk opsi yang dipilih */
+    color: white; /* Warna teks untuk opsi yang dipilih */
+}
+
+/* Gaya untuk label */
+.language-form label {
+    display: block; /* Block display untuk label */
+    font-family: 'Mochiy Pop One', sans-serif; /* Font untuk label */
+    font-size: 1.25rem; /* Ukuran font untuk label */
+    margin-bottom: 0.5rem; /* Ruang di bawah label */
+    color: #333; /* Warna teks untuk label */
+}
+
+/* Gaya untuk tombol simpan */
+.language-form button {
+    background-color: rgb(50, 143, 37); /* Warna latar belakang tombol */
+    color: white; /* Warna teks tombol */
+    padding: 0.75rem 2rem; /* Padding untuk tombol */
+    border-radius: 0.5rem; /* Sudut yang membulat */
+    font-size: 1rem; /* Ukuran font untuk tombol */
+    cursor: pointer; /* Pointer cursor pada hover */
+    border: none; /* Menghilangkan border default */
+    transition: background-color 0.3s; /* Transisi halus untuk hover */
+}
+
+/* Gaya saat tombol dihover */
+.language-form button:hover {
+    background-color: rgb(40, 123, 27); /* Warna lebih gelap saat hover */
+}
+/* Media Queries */
+@media (max-width: 991px) {
+    .profile-wrapper {
+        padding: 6rem 1.25rem;
+    }
+
+    .profile-sidebar {
+        padding: 3rem 1.25rem;
+        width: 100%;
+    }
+
+    .form-container {
+        padding: 2rem;
+        width: 100%;
+    }
+}

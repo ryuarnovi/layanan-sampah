@@ -4,26 +4,27 @@
 
 @section('content')
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
-<div class="container mx-auto px-4">
+<div class="container max-w-max px-4">
     <!-- Hero Section -->
     <div class="text-center py-12">
-        <h1 class="text-4xl font-bold mb-4">Lorem ipsum dolor sit amet</h1>
-        <p class="text-lg text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <h1 class="text-4xl font-bold mb-4">ENVIRONMENTAL
+            SUSTAINABILITY</h1>
+        <p class="text-lg text-gray-600">Environmental sustainability involves making responsible choices that ensure the long-term health of our planet.</p>
     </div>
 
     <!-- Features Navigation -->
-    <nav class="slide-nav-bar flex justify-center border-b border-gray-200">
+    <nav class="slide-nav-bar flex justify-center border-b border-gray-200 left-0 right-0">
         <a href="#" class="slide-nav flex items-center text-white" data-slide="0">
-            <img src="{{asset('images/icon/daun5.png')}}" alt="Logo 1" class="h-6 w-6 mr-2"> Image 1
+            <img src="{{asset('images/icon/daun5.png')}}" alt="Logo 1" class="h-6 w-6 mr-2">Environmental
         </a>
         <a href="#" class="slide-nav flex items-center text-white" data-slide="1">
-            <img src="{{asset('images/icon/daun5.png')}}" alt="Logo 2" class="h-6 w-6 mr-2"> Image 2
+            <img src="{{asset('images/icon/daun5.png')}}" alt="Logo 2" class="h-6 w-6 mr-2">Green
         </a>
         <a href="#" class="slide-nav flex items-center text-white" data-slide="2">
-            <img src="{{asset('images/icon/daun5.png')}}" alt="Logo 3" class="h-6 w-6 mr-2"> Image 3
+            <img src="{{asset('images/icon/daun5.png')}}" alt="Logo 3" class="h-6 w-6 mr-2">Energy
         </a>
         <a href="#" class="slide-nav flex items-center text-white" data-slide="3">
-            <img src="{{asset('images/icon/daun5.png')}}" alt="Logo 4" class="h-6 w-6 mr-2"> Image 4
+            <img src="{{asset('images/icon/daun5.png')}}" alt="Logo 4" class="h-6 w-6 mr-2">Recycling
         </a>
     </nav>
 
@@ -61,8 +62,9 @@
     <section class="py-12">
         <div class="flex flex-col md:flex-row items-center gap-8">
             <div class="space-y-4">
-                <h2 class="text-4xl font-bold mb-4 text-right">SATU POHON MENYELAMATKAN BUMI</h2>
-                <p class="text-gray-600 text-right">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <h2 class="text-4xl font-bold mb-4 text-right">One tree saves
+                    the earth.</h2>
+                <p class="text-gray-600 text-right">Plant a tree today, and you plant the seeds of a sustainable future, one tree can inspire a thousand hearts to care for the earth.</p>
             </div>
             <img src="{{asset('images/slideshow/image 8.png')}}" alt="Content section" class="rounded-lg shadow-lg"/>
         </div>
@@ -73,11 +75,14 @@
         <div class="flex flex-col md:flex-row items-center gap-8">
             <img src="{{asset('images/slideshow/image6.png')}}" alt="About section" class="md:w-1/2 rounded-lg shadow-lg"/>
             <div class="md:w-1/2">
-                <h2 class="text-4xl font-bold mb-4">AYO DAFTAR MENJADI RELAWAN</h2>
-                <p class="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <a href="{{route ('donasi')}}">  <button class="bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition-colors duration-200">
-                    Register
-                </button></a>
+                <h2 class="text-4xl font-bold mb-4">Let's register to become a volunteer.</h2>
+                <p class="text-gray-600">Join us in making a difference!
+                    Your time and passion can help transform lives and protect our planet. Together, we can create a brighter future.</p>
+                <a href="{{ route('donasi.donasi') }}">
+                    <button class="bg-green-700 text-white px-6 py-2 rounded-lg hover:bg-green-800 transition-colors duration-200">
+                        Register
+                    </button>
+                </a>
             </div>
         </div>
     </section>

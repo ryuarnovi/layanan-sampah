@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Login')
+@section('title', 'Daftar')
 
 @section('content')
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
@@ -10,7 +10,7 @@
     <img
       class="background-image"
       src="https://cdn.builder.io/api/v1/image/assets/TEMP/60741ac0f7546bd34775b44d4ffc68c18732667ad483c89bf52155e161269e46?placeholderIfAbsent=true&apiKey=ec0a6845eef9472eafac242bdec5cdb9"
-      alt=""
+      alt="Background Image"
       loading="lazy"
     />
     <div class="container">

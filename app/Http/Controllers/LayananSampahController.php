@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LayananSampah;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class LayananSampahController extends Controller
 {
     public function index()

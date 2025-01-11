@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>@yield('title', 'Layanan Sampah')</title>
-    <link rel="shortcut icon" href="{{ asset('logo.png') }}" type="image/x-icon">
+    <link rel="icon" href="{{asset('images/icon/logo.png')}}">
+    <link rel="shortcut icon" href="{{ asset('images/icon/logo.png') }}" type="image/x-icon">
     @yield('styles')
-    <style>
-    </style>
 </head>
-<body>
-    <!-- Navbar -->
-    <div class="navbar relative">
+<body class="{{ session('theme', 'light') }}-theme">
+        <div class="navbar relative">
         <div class="nav-content fixed top-0 left-0 right-0 z-50">
             <div class="container mx-auto flex justify-between items-center">
                 <!-- Left side: Logo and nav links -->
                 <div class="flex items-center space-x-8">
-                    <img class="logo rounded-5" src="{{ asset('images/icon/daun10.png') }}" alt="Logo">
+                    <img class="logo rounded-5" src="{{ asset('images/icon/logo.png') }}" alt="Logo">
                     <div class="hidden md:flex items-center space-x-8">
                         <a class="text-white hover:text-gray-300 font-medium" href="{{ route('home') }}">Home</a>
                         <div class="relative group">
@@ -27,8 +27,9 @@
                                 Info Layanan
                             </a>
                             <div class="absolute left-0 hidden bg-green-700 rounded-md mt-2 py-2 w-48 group-hover:block" id="infoLayananDropdown">
-                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{ route('layanan-sampah.create') }}">Feature 1</a>
-                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="#">Feature 2</a>
+                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{ route('donasi.donasi') }}">Donasi</a>
+                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{route ('posts.index')}}">News</a>
+
                                 <a class="block text-white hover:bg-green-800 px-4 py-2" href="#">Feature 3</a>
                             </div>
                         </div>
@@ -61,6 +62,7 @@
                             </form>
                         </div>
                     </div>
+                    
                     <!-- Hamburger Menu for Mobile -->
                     <div class="md:hidden">
                         <button id="hamburger" class="text-white focus:outline-none">
@@ -115,39 +117,37 @@
     @yield('scripts')
 
     <script>
-        window.addEventListener('scroll', function() {
-            var navbar = document.querySelector('.nav-content');
-            var navbarImage = document.querySelector('.navbar img');
-            var navbarLine = document.querySelector('.navbarLine');
-            if (window.scrollY > 0) {
-                navbar.style.backgroundColor = '#328F25';
-                navbarImage.classList.add('scrolled');
-                navbarLine.classList.add('scrolled');
-            } else {
-                navbar.style.backgroundColor = 'transparent';
-                navbarImage.classList.remove('scrolled');
-                navbarLine.classList.remove('scrolled');
-            }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                var navbar = document.querySelector('.nav-content');
+                var navbarImage = document.querySelector('.navbar img');
+                var navbarLine = document.querySelector('.navbarLine');
+                if (window.scrollY > 0) {
+                    navbar.style.backgroundColor = '#328F25';
+                    navbarImage.classList.add('scrolled');
+                    navbarLine.classList.add('scrolled');
+                } else {
+                    navbar.style.backgroundColor = 'transparent';
+                    navbarImage.classList.remove('scrolled');
+                    navbarLine.classList.remove('scrolled');
+                }
+            });
+        
+            // Hamburger menu
+            document.getElementById('hamburger').addEventListener('click', function() {
+                var sidebar = document.getElementById('sidebar');
+                sidebar.classList.toggle('open');
+            });
+        
+            // Navbar dropdown
+            document.getElementById('navbarDropdown').addEventListener('click', function(event) {
+                event.preventDefault();
+                var dropdown = document.getElementById('infoLayananDropdown');
+                dropdown.classList.toggle('hidden');
+            });
         });
-
-        document.getElementById('hamburger').addEventListener('click', function() {
-            var sidebar = document.getElementById('sidebar');
-            if (sidebar.classList.contains('open')) {
-                sidebar.classList.remove('open');
-            } else {
-                sidebar.classList.add('open');
-            }
-        });
-
-        document.getElementById('navbarDropdown').addEventListener('click', function(event) {
-            event.preventDefault();
-            var dropdown = document.getElementById('infoLayananDropdown');
-            if (dropdown.classList.contains('hidden')) {
-                dropdown.classList.remove('hidden');
-            } else {
-                dropdown.classList.add('hidden');
-            }
-        });
-    </script>
+        </script>
+        <script src="{{ asset('js/theme.js') }}"></script>
 </body>
 </html>

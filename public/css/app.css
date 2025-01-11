@@ -1,3 +1,5 @@
+
+
 .navbar {
     background-image: url('../images/background/bg_sirih.png');
     background-size: cover;
@@ -14,6 +16,10 @@
 
 .navbar img {
     transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.profile-avatar {
+    border: 2px solid white; /* Menambahkan border putih di sekitar gambar */
 }
 .navbar.scrolled img {
     transform: translateY(100%);
@@ -48,4 +54,14 @@
 .logo{
     height: 70px;
     width: 70px
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
 }

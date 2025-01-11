@@ -6,24 +6,17 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            if (!Schema::hasColumn('users', 'google_id')) {
-                $table->string('google_id')->nullable();
-            }
+            $table->boolean('email_notifications')->default(true);
         });
     }
-    
+
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            if (Schema::hasColumn('users', 'google_id')) {
-                $table->dropColumn('google_id');
-            }
+            $table->dropColumn('email_notifications');
         });
     }
 };
