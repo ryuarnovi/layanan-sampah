@@ -29,12 +29,10 @@
                             <div class="absolute left-0 hidden bg-green-700 rounded-md mt-2 py-2 w-48 group-hover:block" id="infoLayananDropdown">
                                 <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{ route('donasi.donasi') }}">Donasi</a>
                                 <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{route ('posts.index')}}">News</a>
-
-                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="#">Feature 3</a>
                             </div>
                         </div>
-                        <a class="text-white hover:text-gray-300 font-medium" href="#">Services</a>
-                        <a class="text-white hover:text-gray-300 font-medium" href="#">Contact</a>
+                        <a class="text-white hover:text-gray-300 font-medium" href="{{route('relawan.register')}}">Registrasi</a>
+                        <a class="text-white hover:text-gray-300 font-medium" href="{{route('contact.index')}}">Contact</a>
                     </div>
                 </div>
                 

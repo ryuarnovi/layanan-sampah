@@ -9,6 +9,8 @@
 @endsection
 
 @section('content')
+
+<x-logout-modal />
 <div class="profile-container">
     <div class="profile-wrapper">
         <img 

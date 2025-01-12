@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Donasi Form - Donasi')
 
 @section('content')
 <div class="donation-section bg-white text-black flex flex-col items-center text-center">

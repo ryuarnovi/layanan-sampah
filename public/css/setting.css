@@ -403,6 +403,69 @@ input:checked + .toggle-label:before {
 .language-form button:hover {
     background-color: rgb(40, 123, 27); /* Warna lebih gelap saat hover */
 }
+
+
+.dark-theme .language-form select {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: 1px solid #333;
+}
+
+.dark-theme .language-form select:focus {
+    border-color: rgb(60, 153, 47);
+    box-shadow: 0 0 5px rgba(60, 153, 47, 0.5);
+}
+
+.dark-theme .language-form select option {
+    background-color: #1a1a1a;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.dark-theme .language-form select option:checked {
+    background-color: rgb(60, 153, 47);
+    color: #ffffff;
+}
+
+.dark-theme .language-form select option:hover {
+    background-color: #333;
+}
+
+/* Dark theme label styles */
+.dark-theme .language-form label {
+    color: #ffffff;
+}
+
+/* Dark theme button styles */
+.dark-theme .language-form button {
+    background-color: rgb(60, 153, 47);
+    color: #ffffff;
+    border: 1px solid rgb(60, 153, 47);
+}
+
+.dark-theme .language-form button:hover {
+    background-color: rgb(50, 143, 37);
+    border-color: rgb(50, 143, 37);
+}
+
+/* Dark theme form container adjustments */
+.dark-theme .language-form {
+    background-color: transparent;
+}
+
+/* Improve contrast for disabled options in dark theme */
+.dark-theme .language-form select option:disabled {
+    color: #666;
+    background-color: #1a1a1a;
+}
+
+/* Add subtle transition effects */
+.dark-theme .language-form select,
+.dark-theme .language-form button {
+    transition: all 0.3s ease;
+}
+
+
 /* Media Queries */
 @media (max-width: 991px) {
     .profile-wrapper {

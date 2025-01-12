@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Models\Post;
@@ -10,17 +11,13 @@ class PostController extends Controller
 {
     public function index()
     {
-        // Ambil semua postingan dengan relasi user dan comments
-        $posts = Post::with(['user', 'comments'])->latest()->get();
+        // Get all posts with user and comments relationships
+        $posts = Post::with(['user', 'comments', 'likes'])->latest()->get();
         $users = User::all();
-    
-        // Tambahkan informasi apakah pengguna saat ini menyukai setiap postingan
-        foreach ($posts as $post) {
-            $post->liked = $post->likedByUser (auth()->id());
-        }
     
         return view('posts.index', compact('posts', 'users'));
     }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -41,13 +38,14 @@ class PostController extends Controller
 
     public function like(Post $post)
     {
-        $liked = $post->liked;  // Sekarang kita bisa menggunakan accessor
+        $user = auth()->user();
+        $liked = $post->liked;
         
         if ($liked) {
-            $post->likes()->where('user_id', auth()->id())->delete();
+            $post->likes()->where('user_id', $user->id)->delete();
         } else {
             $post->likes()->create([
-                'user_id' => auth()->id()
+                'user_id' => $user->id
             ]);
         }
         

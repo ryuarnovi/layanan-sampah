@@ -1,7 +1,168 @@
 @extends('layouts.app')
 
+@section('title', 'Post - Community')
+
 @section('content')
 <style>
+
+:root {
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --border-color: #dddddd;
+    --hover-bg: #f0f0f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --success-bg: #d4edda;
+    --success-text: #155724;
+    --error-bg: #f8d7da;
+    --error-text: #721c24;
+}
+
+/* Dark theme variables */
+[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #404040;
+    --hover-bg: #363636;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --success-bg: #1b4332;
+    --success-text: #4ade80;
+    --error-bg: #3f1d2b;
+    --error-text: #f87171;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    color: var(--text-primary);
+}
+
+/* Base styles with CSS variables */
+.profile-feed {
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+    padding: 20px 0;
+    transition: background-color 0.3s ease;
+}
+
+.profile-card-container,
+.post-card,
+.post-form {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.username,
+.post-username,
+.post-title {
+    color: var(--text-primary);
+}
+
+.location,
+.profile-bio,
+.post-time,
+.post-content,
+.comment-text {
+    color: var(--text-secondary);
+}
+
+.form-control {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: rgb(50, 143, 37);
+    box-shadow: 0 0 0 2px rgba(50, 143, 37, 0.2);
+}
+
+.btn-secondary {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--hover-bg);
+}
+
+.post-actions {
+    border-top: 1px solid var(--border-color);
+}
+
+.action-button {
+    color: var(--text-secondary);
+}
+
+.action-button:hover {
+    background-color: var(--hover-bg);
+}
+
+.comment-section {
+    border-top: 1px solid var(--border-color);
+}
+
+.comment-input {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+}
+
+.comment-content {
+    background-color: var(--bg-primary);
+}
+
+.post-menu-content {
+    background-color: var(--bg-secondary);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.menu-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.alert-success {
+    background-color: var(--success-bg);
+    color: var(--success-text);
+    border-color: var(--success-text);
+}
+
+.alert-error {
+    background-color: var(--error-bg);
+    color: var(--error-text);
+    border-color: var(--error-text);
+}
 /* Base styles */
 .profile-feed {
     background-color: #f8f9fa;

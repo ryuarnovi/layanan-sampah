@@ -11,6 +11,8 @@ use App\Http\Controllers\DonationController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\RelawanController;
+use App\Http\Controllers\ContactController;
 
 
 
@@ -71,3 +73,13 @@ Route::middleware(['auth'])->group(function () {
 
 // Rute untuk menyimpan komentar
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+// Relawan routes
+Route::middleware(['auth'])->group(function () {
+    Route::get('/relawan/register', [RelawanController::class, 'showRegistrationForm'])->name('relawan.form');
+    Route::post('/relawan/register', [RelawanController::class, 'register'])->name('relawan.register');
+});
+// Other existing routes...
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
