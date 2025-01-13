@@ -3,45 +3,31 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Post extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'title',
         'content',
-        'image',
-        'user_id'
+        'user_id',
+        'image_data',
+        'image_type'
     ];
 
-    protected $appends = ['liked'];
-
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function comments(): HasMany
+    // Accessor untuk URL gambar
+    public function getImageUrlAttribute()
     {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function likes(): HasMany
-    {
-        return $this->hasMany(Like::class);
-    }
-
-    public function getLikedAttribute(): bool
-    {
-        if (!auth()->check()) {
-            return false;
+        if ($this->image_data && $this->image_type) {
+            return "data:{$this->image_type};base64,{$this->image_data}";
         }
-        return $this->likes()->where('user_id', auth()->id())->exists();
-    }
-
-    public function likedByUser($userId): bool
-    {
-        return $this->likes()->where('user_id', $userId)->exists();
+        return null;
     }
 }

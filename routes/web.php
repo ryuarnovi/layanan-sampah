@@ -13,6 +13,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\RelawanController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\SearchController;
 
 
 
@@ -67,8 +68,13 @@ Route::get('/donasi/payment', [DonationController::class, 'showDonationForm'])->
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-    Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-    Route::post('/posts/{post}/like', [PostController::class, 'like'])->name('posts.like');});
+    Route::post('/posts', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
+    Route::get('/search', [PostController::class, 'search'])->name('search');
+    Route::post('/posts/{post}/like', [PostController::class, 'like'])->name('posts.like');
+    Route::post('/posts/{post}/comments', [PostController::class, 'addComment'])->name('posts.comment');
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+});
+    
 
 
 // Rute untuk menyimpan komentar
@@ -83,3 +89,5 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+Route::get('/search', [SearchController::class, 'index'])->name('search');

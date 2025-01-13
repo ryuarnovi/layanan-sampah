@@ -3,56 +3,110 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
     public function index()
     {
-        // Get all posts with user and comments relationships
-        $posts = Post::with(['user', 'comments', 'likes'])->latest()->get();
-        $users = User::all();
-    
-        return view('posts.index', compact('posts', 'users'));
+        $posts = Post::with('user')->latest()->paginate(10);
+        return view('posts.index', compact('posts'));
+    }
+
+    public function create()
+    {
+        return view('posts.create');
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'image' => 'nullable|image|max:2048'
-        ]);
-    
-        $validated['user_id'] = Auth::id();
-    
+        // Debug upload file
         if ($request->hasFile('image')) {
-            $validated['image'] = $request->file('image')->store('post-images', 'public');
-        }
-    
-        Post::create($validated);
-        return redirect()->route('posts.index')->with('success', 'Post created successfully.');
-    }
-
-    public function like(Post $post)
-    {
-        $user = auth()->user();
-        $liked = $post->liked;
-        
-        if ($liked) {
-            $post->likes()->where('user_id', $user->id)->delete();
-        } else {
-            $post->likes()->create([
-                'user_id' => $user->id
+            \Log::info([
+                'has_file' => $request->hasFile('image'),
+                'mime' => $request->file('image')->getClientMimeType(),
+                'size' => $request->file('image')->getSize()
             ]);
         }
-        
-        return response()->json([
-            'success' => true,
-            'likes_count' => $post->likes()->count(),
-            'liked' => !$liked,
+
+        $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
+
+        $post = new Post();
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->user_id = auth()->id();
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            
+            // Resize image
+            $img = Image::make($image)
+                ->fit(800, 600, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            
+            // Convert to base64
+            $post->image_type = $image->getClientMimeType();
+            $post->image_data = base64_encode($img->encode()->encoded);
+        }
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post)
+            ->with('success', 'Post created successfully.');
+    }
+
+    public function show(Post $post)
+    {
+        // Debug image data
+        if ($post->image_data) {
+            \Log::info([
+                'image_type' => $post->image_type,
+                'data_length' => strlen($post->image_data)
+            ]);
+        }
+
+        return view('posts.show', compact('post'));
+    }
+
+    public function edit(Post $post)
+    {
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Request $request, Post $post)
+    {
+        $request->validate([
+            'title' => 'required|max:255',
+            'content' => 'required',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        $post->title = $request->title;
+        $post->content = $request->content;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            
+            // Resize image
+            $img = Image::make($image)
+                ->fit(800, 600, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+            
+            // Convert to base64
+            $post->image_type = $image->getClientMimeType();
+            $post->image_data = base64_encode($img->encode()->encoded);
+        }
+
+        $post->save();
+
+        return redirect()->route('posts.show', $post)
+            ->with('success', 'Post updated successfully.');
     }
 }
