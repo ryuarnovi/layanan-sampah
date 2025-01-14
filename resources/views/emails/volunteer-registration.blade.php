@@ -1,4 +1,3 @@
-// resources/views/emails/volunteer-registration.blade.php
 <!DOCTYPE html>
 <html>
 <head>

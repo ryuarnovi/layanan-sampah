@@ -68,7 +68,9 @@ Route::get('/donasi/payment', [DonationController::class, 'showDonationForm'])->
 Route::middleware(['auth'])->group(function () {
     Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
     Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+    Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
     Route::post('/posts/{post}/like', [PostController::class, 'like'])->name('posts.like');});
+    Route::get('/search', [PostController::class, 'search'])->name('posts.search');
 
 
 // Rute untuk menyimpan komentar

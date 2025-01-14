@@ -55,4 +55,33 @@ class PostController extends Controller
             'liked' => !$liked,
         ]);
     }
+
+    public function show(Post $post)
+    {
+        return view('posts.show', [
+            'post' => $post->load([
+                'user',
+                'likes',
+                'comments' => function($query) {
+                    $query->latest()->with('user');
+                }
+            ])
+        ]);
+    }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        
+        $posts = Post::query()
+            ->where('title', 'LIKE', "%{$query}%")
+            ->orWhere('content', 'LIKE', "%{$query}%")
+            ->with(['user' => function($query) {
+                $query->select('id', 'name', 'avatar');
+            }])
+            ->latest()
+            ->paginate(10);
+
+        return view('posts.search', compact('posts', 'query'));
+    }
 }

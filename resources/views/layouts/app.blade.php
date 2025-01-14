@@ -39,10 +39,17 @@
                 <!-- Right side: search and Profile -->
                 <div class="flex items-center space-x-8">
                     <div class="relative items-center" role="search">
-                        <div class="flex items-center bg-white bg-opacity-20 rounded-lg px-6 py-2 space-x-2">
-                            <span class="text-white" aria-hidden="true">🔍</span>
-                            <span class="text-white">Search</span>
-                        </div>
+                        <form action="{{ route('posts.search') }}" method="GET" class="relative items-center" role="search">
+                            <div class="flex items-center bg-white bg-opacity-20 rounded-lg px-6 py-2 space-x-2">
+                                <span class="text-white" aria-hidden="true">🔍</span>
+                                <input 
+                                    type="text" 
+                                    name="query" 
+                                    placeholder="Search posts..." 
+                                    class="bg-transparent text-white placeholder-white focus:outline-none"
+                                >
+                            </div>
+                        </form>
                     </div>
                     <!-- Profile Button with Dropdown -->
                     <div class="relative group">
