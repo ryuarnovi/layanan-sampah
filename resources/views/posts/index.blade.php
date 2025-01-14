@@ -77,7 +77,13 @@
                         </div>
                     @endif
 
+<<<<<<< HEAD
                     <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" id="post-form">                        @csrf
+=======
+                    <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data" id="post-form">
+
+                        @csrf
+>>>>>>> fc4e0ccd5667e53ce76d972d2ec3eabdf8196b5e
                         <div class="form-group">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" name="title" id="title" class="form-control" required placeholder="Enter your post title">
