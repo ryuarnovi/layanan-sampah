@@ -1,67 +1,227 @@
-
-
+/* Navbar Styles */
 .navbar {
     background-image: url('../images/background/bg_sirih.png');
     background-size: cover;
     background-position: center;
     height: 50vh;
+    position: relative;
 }
 
 .nav-content {
     background-color: rgba(15, 84, 18, 0);
-    padding: 0.5rem;
+    padding: 0.75rem;
+    width: 100%;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(0);
+}
+
+/* Logo styling */
+.logo {
+    height: 70px;
+    width: 70px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backface-visibility: hidden;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* Animated underline for nav links */
+.nav-link {
+    position: relative;
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background-color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
     width: 100%;
 }
 
-
-.navbar img {
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.profile-avatar {
-    border: 2px solid white; /* Menambahkan border putih di sekitar gambar */
-}
-.navbar.scrolled img {
-    transform: translateY(100%);
-    opacity: 0;
-}
-.navbarLine {
-    transition: opacity 0.3s ease;
-}
-.navbar.scrolled .navbarLine {
-    opacity: 0;
-}
-.mobile-menu-bg {
-    background-color: rgba(0, 0, 0, 0.8);
-}
+/* Enhanced Sidebar */
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
-    width: 250px;
-    background-color: #328F25;
+    height: 100vh;
+    width: 280px;
+    background: linear-gradient(135deg, #328F25 0%, #1a4f14 100%);
     transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    z-index: 60; /* Higher than navbar */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 60;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    padding-top: 5rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 }
+
 .sidebar.open {
     transform: translateX(0);
 }
-.nav-content {
-    z-index: 50; /* Lower than sidebar */
-}
-.logo{
-    height: 70px;
-    width: 70px
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 55;
+    backdrop-filter: blur(2px);
 }
 
-.card {
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 20px;
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
-.card-img-top {
-    height: 200px;
-    object-fit: cover;
+
+.sidebar-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-left: 4px solid transparent;
+    user-select: none;
+}
+
+.sidebar-menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-left-color: white;
+    transform: translateX(4px);
+}
+
+.sidebar-dropdown {
+    background-color: rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sidebar-dropdown.open {
+    max-height: 200px;
+}
+
+.sidebar-dropdown a {
+    padding: 0.75rem 2.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    display: block;
+    transition: all 0.2s ease;
+}
+
+.sidebar-dropdown a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding-left: 3rem;
+}
+
+/* Search bar animation */
+.search-input {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 200px;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.search-input:focus {
+    width: 250px;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile dropdown animation */
+.profile-dropdown {
+    transform: translateY(10px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profile-button:hover + .profile-dropdown,
+.profile-dropdown:hover {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Navbar link animations */
+.nav-content a {
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-content a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+    transform-origin: left;
+}
+
+.nav-content a:hover::after {
+    width: 100%;
+}
+
+/* Sidebar dropdown styles */
+.sidebar-dropdown {
+    background-color: rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+}
+
+.sidebar-dropdown.open {
+    max-height: 300px; /* Adjust based on content */
+}
+
+.sidebar-dropdown a {
+    padding: 0.75rem 2.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.sidebar-dropdown a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding-left: 3rem;
+}
+
+/* Dropdown icon animation */
+#sidebarDropdown .fa-chevron-down {
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Sidebar overlay */
+.sidebar-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+}
+
+/* Smooth transitions */
+.sidebar {
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.open {
+    transform: translateX(0);
 }

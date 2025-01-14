@@ -21,18 +21,26 @@
                 <div class="flex items-center space-x-8">
                     <img class="logo rounded-5" src="{{ asset('images/icon/logo.png') }}" alt="Logo">
                     <div class="hidden md:flex items-center space-x-8">
-                        <a class="text-white hover:text-gray-300 font-medium" href="{{ route('home') }}">Home</a>
+                        <a class="text-white hover:text-gray-300 font-medium" href="{{ route('home') }}">
+                            <i class="fas fa-home mr-3"></i>
+                            Home</a>
                         <div class="relative group">
                             <a class="text-white hover:text-gray-300 font-medium" href="#" id="navbarDropdown" role="button" aria-expanded="false">
+                                <i class="fas fa-info-circle mr-3"></i>
                                 Info Layanan
+                                <i class="fas fa-chevron-down ml-auto transform transition-transform duration-100"></i>
                             </a>
                             <div class="absolute left-0 hidden bg-green-700 rounded-md mt-2 py-2 w-48 group-hover:block" id="infoLayananDropdown">
-                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{ route('donasi.donasi') }}">Donasi</a>
-                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{route ('posts.index')}}">News</a>
+                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{ route('donasi.donasi') }}">                                <i class="fas fa-hand-holding-heart mr-2"></i>
+                                    Donasi</a>
+                                <a class="block text-white hover:bg-green-800 px-4 py-2" href="{{route ('posts.index')}}">                                <i class="fas fa-newspaper mr-2"></i>
+                                    News</a>
                             </div>
                         </div>
-                        <a class="text-white hover:text-gray-300 font-medium" href="{{route('relawan.register')}}">Registrasi</a>
-                        <a class="text-white hover:text-gray-300 font-medium" href="{{route('contact.index')}}">Contact</a>
+                        <a class="text-white hover:text-gray-300 font-medium" href="{{route('relawan.register')}}">                        <i class="fas fa-user-plus mr-3"></i>
+                            Registrasi</a>
+                        <a class="text-white hover:text-gray-300 font-medium" href="{{route('contact.index')}}">                        <i class="fas fa-envelope mr-3"></i>
+                            Contact</a>
                     </div>
                 </div>
                 
@@ -54,7 +62,7 @@
                     <!-- Profile Button with Dropdown -->
                     <div class="relative group">
                         <button class="w-10 h-10 bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition-colors">
-                            <a href="{{ route('profile') }}"><img src="{{ asset('images/icon/user.png') }}" alt="Profile"></a>
+                            <a href="{{ route('profile') }}"><img src="{{ asset('images/icon/profile-user.png') }}" alt="Profile"></a>
                         </button>
                         <!-- Dropdown Menu -->
                         <div class="absolute right-0 hidden group-hover:block mt-2 w-48 bg-white rounded-md shadow-lg py-1">
@@ -81,12 +89,50 @@
             <img src="{{ asset('images/icon/navbar.png') }}" class="navbarLine" alt="" srcset="">
         </div>
         <!-- Sidebar Menu -->
-        <div id="sidebar" class="sidebar">
-            <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="{{ route('home') }}">Home</a>
-            <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="#">Features</a>
-            <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="#">Services</a>
-            <a class="block text-white hover:text-gray-300 font-medium py-2 px-4" href="#">Contact</a>
-        </div>
+                <!-- Sidebar Overlay -->
+                <div id="sidebarOverlay" class="sidebar-overlay"></div>
+
+                <!-- Enhanced Sidebar -->
+                <div id="sidebar" class="sidebar">
+                    <button class="absolute top-4 right-4 text-white hover:text-gray-300 transition-transform duration-300 hover:rotate-90" id="sidebarClose">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+        
+                    <a href="{{ route('home') }}" class="sidebar-menu-item">
+                        <i class="fas fa-home mr-3"></i>
+                        Home
+                    </a>
+        
+                    <div class="relative">
+                        <button class="sidebar-menu-item w-full text-left" id="sidebarDropdown">
+                            <i class="fas fa-info-circle mr-3"></i>
+                            Info Layanan
+                            <i class="fas fa-chevron-down ml-auto transform transition-transform duration-300"></i>
+                        </button>
+                        <div class="sidebar-dropdown" id="sidebarDropdownMenu">
+                            <a href="{{ route('donasi.donasi') }}">
+                                <i class="fas fa-hand-holding-heart mr-2"></i>
+                                Donasi
+                            </a>
+                            <a href="{{route ('posts.index')}}">
+                                <i class="fas fa-newspaper mr-2"></i>
+                                News
+                            </a>
+                        </div>
+                    </div>
+        
+                    <a href="{{route('relawan.register')}}" class="sidebar-menu-item">
+                        <i class="fas fa-user-plus mr-3"></i>
+                        Registrasi
+                    </a>
+        
+                    <a href="{{route('contact.index')}}" class="sidebar-menu-item">
+                        <i class="fas fa-envelope mr-3"></i>
+                        Contact
+                    </a>
+                </div>
     </div>
 
     <!-- Rest of the content remains the same -->
@@ -152,6 +198,60 @@
                 dropdown.classList.toggle('hidden');
             });
         });
+
+        // Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Navbar scroll effect (keeping existing functionality)
+    window.addEventListener('scroll', function() {
+        var navbar = document.querySelector('.nav-content');
+        var navbarImage = document.querySelector('.navbar img');
+        var navbarLine = document.querySelector('.navbarLine');
+        if (window.scrollY > 0) {
+            navbar.style.backgroundColor = '#328F25';
+            navbarImage.classList.add('scrolled');
+            navbarLine.classList.add('scrolled');
+        } else {
+            navbar.style.backgroundColor = 'transparent';
+            navbarImage.classList.remove('scrolled');
+            navbarLine.classList.remove('scrolled');
+        }
+    });
+
+    // Sidebar toggle functionality
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const sidebarClose = document.getElementById('sidebarClose');
+    
+    // Toggle sidebar
+    hamburger.addEventListener('click', function() {
+        sidebar.classList.add('open');
+        sidebarOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent body scroll
+    });
+
+    // Close sidebar functions
+    function closeSidebar() {
+        sidebar.classList.remove('open');
+        sidebarOverlay.classList.remove('active');
+        document.body.style.overflow = ''; // Restore body scroll
+    }
+
+    sidebarClose.addEventListener('click', closeSidebar);
+    sidebarOverlay.addEventListener('click', closeSidebar);
+
+    // Sidebar dropdown functionality
+    const sidebarDropdown = document.getElementById('sidebarDropdown');
+    const sidebarDropdownMenu = document.getElementById('sidebarDropdownMenu');
+    const dropdownIcon = sidebarDropdown.querySelector('.fa-chevron-down');
+
+    sidebarDropdown.addEventListener('click', function() {
+        sidebarDropdownMenu.classList.toggle('open');
+        dropdownIcon.style.transform = sidebarDropdownMenu.classList.contains('open') 
+            ? 'rotate(180deg)' 
+            : 'rotate(0deg)';
+    });
+});
         </script>
         <script src="{{ asset('js/theme.js') }}"></script>
 </body>

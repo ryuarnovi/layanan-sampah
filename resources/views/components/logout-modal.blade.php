@@ -4,8 +4,6 @@
         <h2 id="logout-title" class="logout-title">Logout</h2>
         <p id="logout-message" class="logout-message">
             Are you sure you want to logout?
-            <br>
-            Remember, the world is just a click away!
         </p>
         <div class="button-group">
             <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: inline;">
@@ -41,17 +39,11 @@
     }
     
     .logout-modal {
-        border-radius: 50px;
         background-color: #fff;
-        display: flex;
-        max-width: 641px;
-        width: 90%;
-        flex-direction: column;
-        overflow: hidden;
-        align-items: start;
-        color: #000;
-        padding: 38px 53px;
-        font: 400 25px 'Istok Web', sans-serif;
+        border-radius: 8px;
+        padding: 24px;
+        width: 400px;
+        margin: 20px;
         transform: translateY(-20px);
         transition: transform 0.3s ease;
     }
@@ -61,66 +53,64 @@
     }
     
     .logout-title {
-        font: 32px 'Mochiy Pop One', sans-serif;
-        margin: 0;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 0 0 16px 0;
+        color: #333;
     }
     
     .logout-message {
-        margin-top: 7px;
+        font-size: 16px;
+        margin: 0 0 20px 0;
+        color: #666;
     }
     
     .button-group {
-        align-self: end;
         display: flex;
-        margin-top: 7px;
-        gap: 13px;
+        justify-content: flex-end;
+        gap: 8px;
     }
     
     .action-button {
-        border-radius: 30px;
-        background-color: #328f25;
-        color: #fff;
-        font-weight: 700;
-        text-align: center;
-        padding: 12px 55px;
+        padding: 8px 16px;
+        border-radius: 4px;
         border: none;
+        font-size: 14px;
+        font-weight: 500;
         cursor: pointer;
-        transition: transform 0.2s ease, background-color 0.2s ease;
+        transition: background-color 0.2s;
+    }
+    
+    .action-button {
+        background-color: #4CAF50;
+        color: white;
     }
     
     .action-button:hover {
-        transform: scale(1.05);
-        background-color: #2d8021;
-    }
-    
-    .action-button:focus {
-        outline: 2px solid #000;
-        outline-offset: 2px;
+        background-color: #45a049;
     }
     
     .cancel-button {
-        background-color: #dc3545;
+        background-color: #f44336;
     }
     
     .cancel-button:hover {
-        background-color: #c82333;
+        background-color: #da190b;
     }
     
-    @media (max-width: 991px) {
+    @media (max-width: 480px) {
         .logout-modal {
-            padding: 30px;
-            width: 95%;
-            margin: 20px;
+            width: 90%;
+            padding: 20px;
         }
         
         .button-group {
-            flex-direction: column;
+            flex-direction: row;
             width: 100%;
         }
         
         .action-button {
-            width: 100%;
-            padding: 12px 20px;
+            flex: 1;
         }
     }
 </style>
@@ -144,7 +134,6 @@ function showLogoutModal() {
     modal.addEventListener('click', closeOnOutsideClick);
     document.addEventListener('keydown', closeOnEscape);
     
-    // Cleanup listeners when modal closes
     modal.addEventListener('transitionend', function cleanup() {
         if (!modal.classList.contains('active')) {
             modal.removeEventListener('click', closeOnOutsideClick);
